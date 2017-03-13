@@ -1,7 +1,8 @@
-IBD-Group-2:
+#IBD-Group-2:
 
-Adam Estrin
-Arjun Bajaj
-Pushkar Lanka
-Sam Weismuller
-Hongzhou Liu
+##Members:
+- Adam Estrin
+- Arjun Bajaj
+- Pushkar Lanka
+- Sam Weismuller
+- Hongzhou Liu
