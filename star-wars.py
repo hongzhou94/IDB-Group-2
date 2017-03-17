@@ -18,8 +18,8 @@ def films():
         data = json.load(f)
 
     f1 = Film(data['results'][0]['title'], data['results'][0]['director'], data['results'][0]['producer'], data['results'][0]['episode_id'], "http://cdn2us.denofgeek.com/sites/denofgeekus/files/starwars-iv.jpg")
-    f2 = Film(data['results'][1]['title'], data['results'][1]['director'], data['results'][1]['producer'], data['results'][1]['episode_id'], "")
-    f3 = Film(data['results'][2]['title'], data['results'][2]['director'], data['results'][2]['producer'], data['results'][2]['episode_id'], "")
+    f2 = Film(data['results'][1]['title'], data['results'][1]['director'], data['results'][1]['producer'], data['results'][1]['episode_id'], "https://i.ytimg.com/vi/jDIHiIxUGEY/maxresdefault.jpg")
+    f3 = Film(data['results'][2]['title'], data['results'][2]['director'], data['results'][2]['producer'], data['results'][2]['episode_id'], "http://static.dolimg.com/lucas/movies/starwars/starwars_epi5_01-de788d5a9549.jpg")
     films_list = [f1, f2, f3]
 
     return render_template('films.html', films=films_list)
