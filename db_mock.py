@@ -2,6 +2,8 @@ from models import Film, Character, Planet
 import json
 import os
 
+# TODO: instead of using self.xxx, need to use DB for persistence. Use queries to retrieve model instances.
+
 
 class MockDB:
 
