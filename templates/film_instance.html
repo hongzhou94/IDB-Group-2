@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Star Wars - {{ films[0].title }}</title>
+    <title>Star Wars - {{ film.title }}</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -66,7 +66,7 @@
         <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Films</h1>
+                <h1 class="page-header">Film</h1>
             </div>
         </div>
         <!-- /.row -->
@@ -75,19 +75,18 @@
         <div class="row">
             <div class="col-md-7">
                 <a href="#">
-                    <img class="img-responsive" src="{{ films[0].img_url }}" alt="" style="width: 700px; height: 300px;">
+                    <img class="img-responsive" src="{{ film.img_url }}" alt="" style="width: 700px; height: 300px;">
                 </a>
             </div>
             <div class="col-md-5">
-                <h2>{{ films[0].title }}</h2>
-                <h4>Episode {{ films[0].episode_no }}</h4>
+                <h2>{{ film.title }}</h2>
+                <h4>Episode {{ film.episode_no }}</h4>
 {#                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>#}
                 <ul>
-                  <li>Director: {{ films[0].director }}</li>
-                  <li>Producers: {{ films[0].producer }}</li>
-                  <li>Release Date: {{ films[0].release_date }}</li>
+                  <li>Director: {{ film.director }}</li>
+                  <li>Producers: {{ film.producer }}</li>
+                  <li>Release Date: {{ film.release_date }}</li>
                 </ul>
-                <a class="btn btn-primary" href="#">View<span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
         <!-- /.row -->

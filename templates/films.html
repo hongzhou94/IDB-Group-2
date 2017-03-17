@@ -87,7 +87,7 @@
                   <li>Producers: {{ films[0].producer }}</li>
                   <li>Release Date: {{ films[0].release_date }}</li>
                 </ul>
-                <a class="btn btn-primary" href="#">View<span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="btn btn-primary" href="{{ url_for('film', film_id=0) }}">View<span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
         <!-- /.row -->
@@ -110,7 +110,7 @@
                   <li>Producers: {{ films[1].producer }}</li>
                   <li>Release Date: {{ films[1].release_date }}</li>
                 </ul>
-                <a class="btn btn-primary" href="#">View<span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="btn btn-primary" href="{{ url_for('film', film_id=1) }}">View<span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
         <!-- /.row -->
@@ -133,7 +133,7 @@
                   <li>Producers: {{ films[2].producer }}</li>
                   <li>Release Date: {{ films[2].release_date }}</li>
                 </ul>
-                <a class="btn btn-primary" href="#">View<span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="btn btn-primary" href="{{ url_for('film', film_id=2) }}">View<span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
         <!-- /.row -->

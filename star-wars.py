@@ -16,6 +16,7 @@ def hello_world():
 
 @app.route('/film/<film_id>')
 def film(film_id):
+    film_id = int(film_id)
     return render_template('film_instance.html', film=db.get_film(film_id))
 
 
@@ -27,6 +28,7 @@ def films():
 
 @app.route('/character/<character_id>')
 def character(character_id):
+    character_id = int(character_id)
     return render_template('character_instance.html', character=db.get_character(character_id))
 
 
@@ -37,6 +39,7 @@ def characters():
 
 @app.route('/planet/<planet_id>')
 def planet(planet_id):
+    planet_id = int(planet_id)
     return render_template('planet_instance.html', planet=db.get_character(planet_id))
 
 
