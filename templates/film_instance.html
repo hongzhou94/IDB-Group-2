@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Star Wars - Films</title>
+    <title>Star Wars - {{ films[0].title }}</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -93,52 +93,6 @@
         <!-- /.row -->
 
         <hr>
-
-        <!-- Project Two -->
-        <div class="row">
-            <div class="col-md-7">
-                <a href="#">
-                    <img class="img-responsive" src="{{ films[1].img_url }}" alt="" style="width: 700px; height: 300px;">
-                </a>
-            </div>
-            <div class="col-md-5">
-                <h2>{{ films[1].title }}</h2>
-                <h4>Episode {{ films[1].episode_no }}</h4>
-{#                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>#}
-                <ul>
-                  <li>Director: {{ films[1].director }}</li>
-                  <li>Producers: {{ films[1].producer }}</li>
-                  <li>Release Date: {{ films[1].release_date }}</li>
-                </ul>
-                <a class="btn btn-primary" href="#">View<span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Project Three -->
-        <div class="row">
-            <div class="col-md-7">
-                <a href="#">
-                    <img class="img-responsive" src="{{ films[2].img_url }}" alt="" style="width: 700px; height: 300px;">
-                </a>
-            </div>
-            <div class="col-md-5">
-                <h2>{{ films[2].title }}</h2>
-                <h4>Episode {{ films[2].episode_no }}</h4>
-{#                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>#}
-                <ul>
-                  <li>Director: {{ films[2].director }}</li>
-                  <li>Producers: {{ films[2].producer }}</li>
-                  <li>Release Date: {{ films[2].release_date }}</li>
-                </ul>
-                <a class="btn btn-primary" href="#">View<span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        {#TODO: create common stylesheet for img style width and height#}
 
         <!-- Footer -->
         <footer>
