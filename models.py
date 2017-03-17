@@ -9,10 +9,12 @@ class Film:
 
 
 class Character:
-    def __init__(self, name, birth_year, hair_color, img_url):
+    def __init__(self, name, birth_year, hair_color, height, mass, img_url):
         self.name = name
         self.birth_year = birth_year
         self.hair_color = hair_color
+        self.height = height
+        self.mass = mass
         self.img_url = img_url
 
 
