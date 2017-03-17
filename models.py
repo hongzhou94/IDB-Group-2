@@ -1,9 +1,10 @@
 class Film:
-    def __init__(self, title, director, producer, episode_no, img_url):
+    def __init__(self, title, director, producer, episode_no, release_date, img_url):
         self.title = title
         self.director = director
         self.producer = producer
         self.episode_no = episode_no
+        self.release_date = release_date
         self.img_url = img_url
 
 
