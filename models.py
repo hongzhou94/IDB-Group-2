@@ -19,9 +19,11 @@ class Character:
 
 
 class Planet:
-    def __init__(self, name, climate, population, img_url):
+    def __init__(self, name, climate, population, gravity, terrain, img_url):
         self.name = name
         self.climate = climate
         self.population = population
+        self.gravity = gravity
+        self.terrain = terrain
         self.img_url = img_url
 

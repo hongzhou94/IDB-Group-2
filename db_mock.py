@@ -61,8 +61,8 @@ class MockDB:
             data = json.load(f)
 
         d = data['results']
-        p1 = Planet(d[0]['name'], d[0]['climate'], d[0]['population'], "http://vignette4.wikia.nocookie.net/starwars/images/e/e6/MosEisley-celebration.png/revision/latest?cb=20130420052326")
-        p2 = Planet(d[1]['name'], d[1]['climate'], d[1]['population'], "http://overmental.com/wp-content/uploads/2015/07/Naboo-TPM-790x336.jpg")
-        p3 = Planet(d[2]['name'], d[2]['climate'], d[2]['population'], "http://cdn.segmentnext.com/wp-content/uploads/2016/05/Star-Wars-Battlefront-Bespin-DLC-1.jpg")
+        p1 = Planet(d[0]['name'], d[0]['climate'], d[0]['population'], d[0]['gravity'], d[0]['terrain'], "https://img.clipartfox.com/92129e5d25a3b8557820a8e286ee002e_chott-el-jerid-wookieepedia-star-wars-tatooine-clipart_1900-815.jpeg")
+        p2 = Planet(d[1]['name'], d[1]['climate'], d[1]['population'], d[1]['gravity'], d[1]['terrain'], "http://overmental.com/wp-content/uploads/2015/07/Naboo-TPM-790x336.jpg")
+        p3 = Planet(d[2]['name'], d[2]['climate'], d[2]['population'], d[2]['gravity'], d[2]['terrain'], "http://cdn.segmentnext.com/wp-content/uploads/2016/05/Star-Wars-Battlefront-Bespin-DLC-1.jpg")
 
         return [p1, p2, p3]
