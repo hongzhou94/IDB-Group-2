@@ -39,6 +39,19 @@
                       <li>Director: {{ film.director }}</li>
                       <li>Producers: {{ film.producer }}</li>
                       <li>Release Date: {{ film.release_date }}</li>
+                      <li>Characters: 
+                        <ul>
+                            {% for character,char_id in film.characters.iteritems() %}
+                            <li><a href="{{url_for('character', character_id = char_id)}}">{{character}}</a></li>
+                            {% endfor %}
+                        </ul> 
+                      </li>
+                      <li>Planets: 
+                        <ul>
+                            {% for planet,planet_id in film.planets.iteritems() %}
+                            <li><a href="{{url_for('planet', planet_id = planet_id)}}">{{planet}}</a></li>
+                            {% endfor %}
+                        </ul>
                     </ul>
                     <a class="btn btn-primary" href="{{ url_for('film', film_id=index) }}">View<span class="glyphicon glyphicon-chevron-right"></span></a>
                 </div>

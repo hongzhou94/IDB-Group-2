@@ -39,20 +39,20 @@
                       <li>Height: {{ character.height }}</li>
                       <li>Weight: {{ character.mass }}</li>
                       <li>Hair Color: {{ character.hair_color }}</li>
-                      <li>Films: 
+                       <li>Films: 
                         <ul>
-                            {% for film in character.films %}
-                            <li><a href="{{url_for('film', film_id = film)}}">film</a></li>
+                            {% for film,film_id in character.films.iteritems() %}
+                            <li><a href="{{url_for('film', film_id = film_id)}}">{{film}}</a></li>
                             {% endfor %}
                         </ul> 
                       </li>
                       <li>Planets: 
                         <ul>
-                            {% for planet in character.planets %}
-                            <li><a href="{{url_for('planet', planet_id = planet)}}">planet</a></li>
+                            {% for planet,planet_id in character.planets.iteritems() %}
+                            <li><a href="{{url_for('planet', planet_id = planet_id)}}">{{planet}}</a></li>
                             {% endfor %}
                         </ul>
-                        </li>
+                    </li>
                     </ul>
                     <a class="btn btn-primary" href="{{ url_for('character', character_id=index) }}">View<span class="glyphicon glyphicon-chevron-right"></span></a>
                 </div>

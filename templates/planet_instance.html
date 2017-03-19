@@ -38,8 +38,19 @@
                   <li>Population: {{ planet.population }}</li>
                   <li>Gravity: {{ planet.gravity }}</li>
                   <li>Terrain: {{ planet.terrain }}</li>
-                  <li>Films: </li>
-                  <li>Residents: </li>
+                  <li>Residents: 
+                        <ul>
+                            {% for character,char_id in planet.characters.iteritems() %}
+                            <li><a href="{{url_for('character', character_id = char_id)}}">{{character}}</a></li>
+                            {% endfor %}
+                        </ul> 
+                      </li>
+                      <li>Films: 
+                        <ul>
+                            {% for film,film_id in planet.films.iteritems() %}
+                            <li><a href="{{url_for('film', film_id = film_id)}}">{{film}}</a></li>
+                            {% endfor %}
+                </ul>
                 </ul>
             </div>
         </div>

@@ -8,9 +8,9 @@ import os
 class MockDB:
 
     def __init__(self, static_folder):
-        self.static_planets = [0,1,2]
-        self.static_char = [0,1,2]
-        self.static_films = [0,1,2]
+        self.static_planets = {"Tatooine":0,"Naboo":1,"Bespin":2}
+        self.static_char = {"Luke Skywalker":0,"Lobot":1,"R2-D2":2}
+        self.static_films = {"A New Hope":0,"Empire Strikes Back":1,"Return of the Jedi":2}
         self.static_folder = static_folder
         self.films = self.init_films()
         self.characters = self.init_characters()
