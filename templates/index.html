@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <!-- App global header -->
+    {% include 'head.html' %}
+
     <title>Title</title>
 </head>
 <body>
-    <h1>Splash Page!</h1>
 
-    <a href="{{ url_for('films') }}">Films</a><br>
-    <a href="{{ url_for('characters') }}">Characters</a><br>
-    <a href="{{ url_for('planets') }}">Planets</a><br>
+    <!-- Navigation -->
+    {% include 'nav.html' %}
+
+    <h1>Splash Page!</h1>
 </body>
 </html>
