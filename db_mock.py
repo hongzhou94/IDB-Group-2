@@ -49,9 +49,9 @@ class MockDB:
             data = json.load(f)
 
         d = data['results']
-        c1 = Character(d[0]['name'], d[0]['birth_year'], d[0]['hair_color'], d[0]['height'], d[0]['mass'], "")
-        c2 = Character(d[1]['name'], d[1]['birth_year'], d[1]['hair_color'], d[1]['height'], d[1]['mass'], "")
-        c3 = Character(d[2]['name'], d[2]['birth_year'], d[2]['hair_color'], d[2]['height'], d[2]['mass'], "")
+        c1 = Character(d[0]['name'], d[0]['birth_year'], d[0]['hair_color'], d[0]['height'], d[0]['mass'], "http://starwarscardtraderapp.com/wp-content/uploads/2015/12/99-1-7-Award-Luke-Skywalker.png")
+        c2 = Character(d[1]['name'], d[1]['birth_year'], d[1]['hair_color'], d[1]['height'], d[1]['mass'], "https://lumiere-a.akamaihd.net/v1/images/databank_lobot_01_169_8a50d7ae.jpeg?region=0%2C0%2C1560%2C878&width=768")
+        c3 = Character(d[2]['name'], d[2]['birth_year'], d[2]['hair_color'], d[2]['height'], d[2]['mass'], "http://rcysl.com/wp-content/uploads/2017/03/R2d2-Wallpaper-In-High-Definition-.jpg")
 
         return [c1, c2, c3]
 
@@ -61,8 +61,8 @@ class MockDB:
             data = json.load(f)
 
         d = data['results']
-        p1 = Planet(d[0]['name'], d[0]['climate'], d[0]['population'], "")
-        p2 = Planet(d[1]['name'], d[1]['climate'], d[1]['population'], "")
-        p3 = Planet(d[2]['name'], d[2]['climate'], d[2]['population'], "")
+        p1 = Planet(d[0]['name'], d[0]['climate'], d[0]['population'], "http://vignette4.wikia.nocookie.net/starwars/images/e/e6/MosEisley-celebration.png/revision/latest?cb=20130420052326")
+        p2 = Planet(d[1]['name'], d[1]['climate'], d[1]['population'], "http://overmental.com/wp-content/uploads/2015/07/Naboo-TPM-790x336.jpg")
+        p3 = Planet(d[2]['name'], d[2]['climate'], d[2]['population'], "http://cdn.segmentnext.com/wp-content/uploads/2016/05/Star-Wars-Battlefront-Bespin-DLC-1.jpg")
 
         return [p1, p2, p3]

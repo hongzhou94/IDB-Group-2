@@ -38,7 +38,7 @@ def characters():
 @app.route('/planet/<planet_id>')
 def planet(planet_id):
     planet_id = int(planet_id)
-    return render_template('planet_instance.html', planet=db.get_character(planet_id))
+    return render_template('planet_instance.html', planet=db.get_planet(planet_id))
 
 
 @app.route('/planets')
