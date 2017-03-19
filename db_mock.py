@@ -10,8 +10,8 @@ import os
 # side
 class Link:
 
-    def __init__(self, name, index):
-        self.name = name
+    def __init__(self, description, index):
+        self.description = description
         self.index = index
 
 
@@ -19,7 +19,7 @@ class MockDB:
 
     def __init__(self, static_folder):
         self.static_planets = {"Tatooine":0,"Naboo":1,"Bespin":2}
-        self.static_char = {"Luke Skywalker":0,"Lobot":1,"R2-D2":2}
+        self.static_char = {"Luke Skywalker","Lobot","R2-D2"}
         self.static_films = {"A New Hope":0,"Empire Strikes Back":1,"Return of the Jedi":2}
         self.static_folder = static_folder
         self.films = self.init_films()
@@ -62,9 +62,9 @@ class MockDB:
             data = json.load(f)
 
         d = data['results']
-        c1 = Character(d[0]['name'], d[0]['birth_year'], d[0]['height'], d[0]['mass'],self.static_films,self.static_planets, "http://starwarscardtraderapp.com/wp-content/uploads/2015/12/99-1-7-Award-Luke-Skywalker.png")
-        c2 = Character(d[1]['name'], d[1]['birth_year'], d[1]['height'], d[1]['mass'],self.static_films,self.static_planets, "https://lumiere-a.akamaihd.net/v1/images/databank_lobot_01_169_8a50d7ae.jpeg?region=0%2C0%2C1560%2C878&width=768")
-        c3 = Character(d[2]['name'], d[2]['birth_year'], d[2]['height'], d[2]['mass'],self.static_films,self.static_planets, "http://rcysl.com/wp-content/uploads/2017/03/R2d2-Wallpaper-In-High-Definition-.jpg")
+        c1 = Character(d[0]['name'], d[0]['birth_year'], d[0]['height'], d[0]['mass'], self.static_films, self.static_planets, "http://starwarscardtraderapp.com/wp-content/uploads/2015/12/99-1-7-Award-Luke-Skywalker.png")
+        c2 = Character(d[1]['name'], d[1]['birth_year'], d[1]['height'], d[1]['mass'], self.static_films, self.static_planets, "https://lumiere-a.akamaihd.net/v1/images/databank_lobot_01_169_8a50d7ae.jpeg?region=0%2C0%2C1560%2C878&width=768")
+        c3 = Character(d[2]['name'], d[2]['birth_year'], d[2]['height'], d[2]['mass'], self.static_films, self.static_planets, "http://rcysl.com/wp-content/uploads/2017/03/R2d2-Wallpaper-In-High-Definition-.jpg")
 
         return [c1, c2, c3]
 
@@ -74,8 +74,10 @@ class MockDB:
             data = json.load(f)
 
         d = data['results']
-        p1 = Planet(d[0]['name'], d[0]['climate'], d[0]['population'], d[0]['gravity'], d[0]['terrain'],self.static_films,self.static_char, "https://img.clipartfox.com/92129e5d25a3b8557820a8e286ee002e_chott-el-jerid-wookieepedia-star-wars-tatooine-clipart_1900-815.jpeg")
-        p2 = Planet(d[1]['name'], d[1]['climate'], d[1]['population'], d[1]['gravity'], d[1]['terrain'],self.static_films,self.static_char, "http://overmental.com/wp-content/uploads/2015/07/Naboo-TPM-790x336.jpg")
-        p3 = Planet(d[2]['name'], d[2]['climate'], d[2]['population'], d[2]['gravity'], d[2]['terrain'],self.static_films,self.static_char, "http://cdn.segmentnext.com/wp-content/uploads/2016/05/Star-Wars-Battlefront-Bespin-DLC-1.jpg")
-
+        p1 = Planet(d[0]['name'], d[0]['climate'], d[0]['population'], d[0]['gravity'], d[0]['terrain'], "https://img.clipartfox.com/92129e5d25a3b8557820a8e286ee002e_chott-el-jerid-wookieepedia-star-wars-tatooine-clipart_1900-815.jpeg",
+                    [Link("A New Hope", 0), Link("Return of the Jedi", 1)], [Link("Luke Skywalker", 0)])
+        p2 = Planet(d[1]['name'], d[1]['climate'], d[1]['population'], d[1]['gravity'], d[1]['terrain'], "http://overmental.com/wp-content/uploads/2015/07/Naboo-TPM-790x336.jpg",
+                    [Link("Return of the Jedi", 1)], [Link("R2-D2", 2)])
+        p3 = Planet(d[2]['name'], d[2]['climate'], d[2]['population'], d[2]['gravity'], d[2]['terrain'], "http://cdn.segmentnext.com/wp-content/uploads/2016/05/Star-Wars-Battlefront-Bespin-DLC-1.jpg",
+                    [Link("The Empire Strikes Back", 2)], [Link("Lobot", 1)])
         return [p1, p2, p3]

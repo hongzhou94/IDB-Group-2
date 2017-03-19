@@ -41,18 +41,19 @@
                       <li>Terrain: {{ planet.terrain }}</li>
                       <li>Residents: 
                         <ul>
-                            {% for character,char_id in planet.characters.iteritems() %}
-                            <li><a href="{{url_for('character', character_id = char_id)}}">{{character}}</a></li>
+                            {% for l in planet.characters %}
+                                <li><a href="{{ url_for('character', character_id=l.index) }}">{{ l.description }}</a></li>
                             {% endfor %}
-                        </ul> 
+                        </ul>
                       </li>
-                      <li>Films: 
+                      <li>Films:
                         <ul>
-                            {% for film,film_id in planet.films.iteritems() %}
-                            <li><a href="{{url_for('film', film_id = film_id)}}">{{film}}</a></li>
+                            {% for l in planet.films %}
+                                <li><a href="{{ url_for('film', film_id=l.index) }}">{{ l.description }}</a></li>
                             {% endfor %}
-                </ul>
-                </ul>
+                        </ul>
+                      </li>
+                    </ul>
                     <a class="btn btn-primary" href="{{ url_for('planet', planet_id=index) }}">View<span class="glyphicon glyphicon-chevron-right"></span></a>
                 </div>
             </div>
