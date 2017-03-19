@@ -38,8 +38,7 @@
                       <li>Birth year: {{ character.birth_year }}</li>
                       <li>Height: {{ character.height }}</li>
                       <li>Weight: {{ character.mass }}</li>
-                      <li>Hair Color: {{ character.hair_color }}</li>
-                       <li>Films: 
+                       <li>Films:
                         <ul>
                             {% for film,film_id in character.films.iteritems() %}
                             <li><a href="{{url_for('film', film_id = film_id)}}">{{film}}</a></li>

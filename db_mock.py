@@ -2,7 +2,17 @@ from models import Film, Character, Planet
 import json
 import os
 
-# TODO: instead of using self.xxx, need to use DB for persistence. Use queries to retrieve model instances.
+# TODO: Phase 2: instead of using self.xxx, need to use DB for persistence. Use queries to retrieve model instances.
+
+
+# TODO: In phase 2, Link object is not required. The retreived film/character/planet objects from the DB should have
+# the id already in it, so you can simply pass the full object into the render_template, to get name/id on the HTML
+# side
+class Link:
+
+    def __init__(self, name, index):
+        self.name = name
+        self.index = index
 
 
 class MockDB:
@@ -15,6 +25,7 @@ class MockDB:
         self.films = self.init_films()
         self.characters = self.init_characters()
         self.planets = self.init_planets()
+
     def get_film(self, index):
         return self.films[index]
 
@@ -51,9 +62,9 @@ class MockDB:
             data = json.load(f)
 
         d = data['results']
-        c1 = Character(d[0]['name'], d[0]['birth_year'], d[0]['hair_color'], d[0]['height'], d[0]['mass'],self.static_films,self.static_planets, "http://starwarscardtraderapp.com/wp-content/uploads/2015/12/99-1-7-Award-Luke-Skywalker.png")
-        c2 = Character(d[1]['name'], d[1]['birth_year'], d[1]['hair_color'], d[1]['height'], d[1]['mass'],self.static_films,self.static_planets, "https://lumiere-a.akamaihd.net/v1/images/databank_lobot_01_169_8a50d7ae.jpeg?region=0%2C0%2C1560%2C878&width=768")
-        c3 = Character(d[2]['name'], d[2]['birth_year'], d[2]['hair_color'], d[2]['height'], d[2]['mass'],self.static_films,self.static_planets, "http://rcysl.com/wp-content/uploads/2017/03/R2d2-Wallpaper-In-High-Definition-.jpg")
+        c1 = Character(d[0]['name'], d[0]['birth_year'], d[0]['height'], d[0]['mass'],self.static_films,self.static_planets, "http://starwarscardtraderapp.com/wp-content/uploads/2015/12/99-1-7-Award-Luke-Skywalker.png")
+        c2 = Character(d[1]['name'], d[1]['birth_year'], d[1]['height'], d[1]['mass'],self.static_films,self.static_planets, "https://lumiere-a.akamaihd.net/v1/images/databank_lobot_01_169_8a50d7ae.jpeg?region=0%2C0%2C1560%2C878&width=768")
+        c3 = Character(d[2]['name'], d[2]['birth_year'], d[2]['height'], d[2]['mass'],self.static_films,self.static_planets, "http://rcysl.com/wp-content/uploads/2017/03/R2d2-Wallpaper-In-High-Definition-.jpg")
 
         return [c1, c2, c3]
 

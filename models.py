@@ -8,18 +8,21 @@ class Film:
         self.characters = characters
         self.planets = planets
         self.img_url = img_url
+        self.characters = characters
+        self.planets = planets
 
 
 class Character:
-    def __init__(self, name, birth_year, hair_color, height, mass, films, planets, img_url):
+    def __init__(self, name, birth_year, height, mass, films, planets, img_url):
         self.name = name
         self.birth_year = birth_year
-        self.hair_color = hair_color
         self.height = height
         self.mass = mass
         self.films = films
         self.planets = planets
         self.img_url = img_url
+        self.films = films
+        self.planets = planets
 
 
 class Planet:
@@ -32,4 +35,6 @@ class Planet:
         self.films = films
         self.characters = characters
         self.img_url = img_url
+        self.films = films
+        self.characters = characters
 
