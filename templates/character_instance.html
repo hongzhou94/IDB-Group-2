@@ -38,8 +38,20 @@
                   <li>Height: {{ character.height }}</li>
                   <li>Weight: {{ character.mass }}</li>
                   <li>Hair Color: {{ character.hair_color }}</li>
-                  <li>Films: </li>
-                  <li>Planets: </li>
+                   <li>Films: 
+                        <ul>
+                            {% for film in character.films %}
+                            <li><a href="{{url_for('film', film_id = film)}}">film</a></li>
+                            {% endfor %}
+                        </ul> 
+                      </li>
+                      <li>Planets: 
+                        <ul>
+                            {% for planet in character.planets %}
+                            <li><a href="{{url_for('planet', planet_id = planet)}}">planet</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
