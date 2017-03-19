@@ -21,7 +21,7 @@ def film(film_id):
 
 @app.route('/films')
 def films():
-    return render_template('films.html', films=db.get_films())
+    return render_template('films.html', films=enumerate(db.get_films()))
 
 
 @app.route('/character/<character_id>')
@@ -32,7 +32,7 @@ def character(character_id):
 
 @app.route('/characters')
 def characters():
-    return render_template('characters.html', characters=db.get_characters())
+    return render_template('characters.html', characters=enumerate(db.get_characters()))
 
 
 @app.route('/planet/<planet_id>')
@@ -43,7 +43,7 @@ def planet(planet_id):
 
 @app.route('/planets')
 def planets():
-    return render_template('planets.html', planets=db.get_planets())
+    return render_template('planets.html', planets=enumerate(db.get_planets()))
 
 
 if __name__ == '__main__':

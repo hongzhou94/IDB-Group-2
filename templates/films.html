@@ -71,72 +71,96 @@
         </div>
         <!-- /.row -->
 
-        <!-- Project One -->
-        <div class="row">
-            <div class="col-md-7">
-                <a href="#">
-                    <img class="img-responsive" src="{{ films[0].img_url }}" alt="" style="width: 700px; height: 300px;">
-                </a>
+        {% for index, film in films %}
+            <!-- Project One -->
+            <div class="row">
+                <div class="col-md-7">
+                    <a href="#">
+                        <img class="img-responsive" src="{{ film.img_url }}" alt="" style="width: 700px; height: 300px;">
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <h2>{{ film.title }}</h2>
+                    <h4>Episode {{ film.episode_no }}</h4>
+    {#                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>#}
+                    <ul>
+                      <li>Director: {{ film.director }}</li>
+                      <li>Producers: {{ film.producer }}</li>
+                      <li>Release Date: {{ film.release_date }}</li>
+                    </ul>
+                    <a class="btn btn-primary" href="{{ url_for('film', film_id=index) }}">View<span class="glyphicon glyphicon-chevron-right"></span></a>
+                </div>
             </div>
-            <div class="col-md-5">
-                <h2>{{ films[0].title }}</h2>
-                <h4>Episode {{ films[0].episode_no }}</h4>
+            <!-- /.row -->
+            <hr>
+        {% endfor %}
+
+{#        <!-- Project One -->#}
+{#        <div class="row">#}
+{#            <div class="col-md-7">#}
+{#                <a href="#">#}
+{#                    <img class="img-responsive" src="{{ films[0].img_url }}" alt="" style="width: 700px; height: 300px;">#}
+{#                </a>#}
+{#            </div>#}
+{#            <div class="col-md-5">#}
+{#                <h2>{{ films[0].title }}</h2>#}
+{#                <h4>Episode {{ films[0].episode_no }}</h4>#}
 {#                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>#}
-                <ul>
-                  <li>Director: {{ films[0].director }}</li>
-                  <li>Producers: {{ films[0].producer }}</li>
-                  <li>Release Date: {{ films[0].release_date }}</li>
-                </ul>
-                <a class="btn btn-primary" href="{{ url_for('film', film_id=0) }}">View<span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Project Two -->
-        <div class="row">
-            <div class="col-md-7">
-                <a href="#">
-                    <img class="img-responsive" src="{{ films[1].img_url }}" alt="" style="width: 700px; height: 300px;">
-                </a>
-            </div>
-            <div class="col-md-5">
-                <h2>{{ films[1].title }}</h2>
-                <h4>Episode {{ films[1].episode_no }}</h4>
+{#                <ul>#}
+{#                  <li>Director: {{ films[0].director }}</li>#}
+{#                  <li>Producers: {{ films[0].producer }}</li>#}
+{#                  <li>Release Date: {{ films[0].release_date }}</li>#}
+{#                </ul>#}
+{#                <a class="btn btn-primary" href="{{ url_for('film', film_id=0) }}">View<span class="glyphicon glyphicon-chevron-right"></span></a>#}
+{#            </div>#}
+{#        </div>#}
+{#        <!-- /.row -->#}
+{##}
+{#        <hr>#}
+{##}
+{#        <!-- Project Two -->#}
+{#        <div class="row">#}
+{#            <div class="col-md-7">#}
+{#                <a href="#">#}
+{#                    <img class="img-responsive" src="{{ films[1].img_url }}" alt="" style="width: 700px; height: 300px;">#}
+{#                </a>#}
+{#            </div>#}
+{#            <div class="col-md-5">#}
+{#                <h2>{{ films[1].title }}</h2>#}
+{#                <h4>Episode {{ films[1].episode_no }}</h4>#}
 {#                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>#}
-                <ul>
-                  <li>Director: {{ films[1].director }}</li>
-                  <li>Producers: {{ films[1].producer }}</li>
-                  <li>Release Date: {{ films[1].release_date }}</li>
-                </ul>
-                <a class="btn btn-primary" href="{{ url_for('film', film_id=1) }}">View<span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Project Three -->
-        <div class="row">
-            <div class="col-md-7">
-                <a href="#">
-                    <img class="img-responsive" src="{{ films[2].img_url }}" alt="" style="width: 700px; height: 300px;">
-                </a>
-            </div>
-            <div class="col-md-5">
-                <h2>{{ films[2].title }}</h2>
-                <h4>Episode {{ films[2].episode_no }}</h4>
+{#                <ul>#}
+{#                  <li>Director: {{ films[1].director }}</li>#}
+{#                  <li>Producers: {{ films[1].producer }}</li>#}
+{#                  <li>Release Date: {{ films[1].release_date }}</li>#}
+{#                </ul>#}
+{#                <a class="btn btn-primary" href="{{ url_for('film', film_id=1) }}">View<span class="glyphicon glyphicon-chevron-right"></span></a>#}
+{#            </div>#}
+{#        </div>#}
+{#        <!-- /.row -->#}
+{##}
+{#        <hr>#}
+{##}
+{#        <!-- Project Three -->#}
+{#        <div class="row">#}
+{#            <div class="col-md-7">#}
+{#                <a href="#">#}
+{#                    <img class="img-responsive" src="{{ films[2].img_url }}" alt="" style="width: 700px; height: 300px;">#}
+{#                </a>#}
+{#            </div>#}
+{#            <div class="col-md-5">#}
+{#                <h2>{{ films[2].title }}</h2>#}
+{#                <h4>Episode {{ films[2].episode_no }}</h4>#}
 {#                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>#}
-                <ul>
-                  <li>Director: {{ films[2].director }}</li>
-                  <li>Producers: {{ films[2].producer }}</li>
-                  <li>Release Date: {{ films[2].release_date }}</li>
-                </ul>
-                <a class="btn btn-primary" href="{{ url_for('film', film_id=2) }}">View<span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-        </div>
-        <!-- /.row -->
+{#                <ul>#}
+{#                  <li>Director: {{ films[2].director }}</li>#}
+{#                  <li>Producers: {{ films[2].producer }}</li>#}
+{#                  <li>Release Date: {{ films[2].release_date }}</li>#}
+{#                </ul>#}
+{#                <a class="btn btn-primary" href="{{ url_for('film', film_id=2) }}">View<span class="glyphicon glyphicon-chevron-right"></span></a>#}
+{#            </div>#}
+{#        </div>#}
+{#        <!-- /.row -->#}
 
         {#TODO: create common stylesheet for img style width and height#}
 
