@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Star Wars - Characters</title>
+    <title>Star Wars - {{ character.name }}</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -66,7 +66,7 @@
         <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Characters</h1>
+                <h1 class="page-header">Character</h1>
             </div>
         </div>
         <!-- /.row -->
@@ -75,17 +75,17 @@
         <div class="row">
             <div class="col-md-7">
                 <a href="#">
-                    <img class="img-responsive" src="{{ characters[0].img_url }}" alt="" style="width: 700px; height: 300px;">
+                    <img class="img-responsive" src="{{ character.img_url }}" alt="" style="width: 700px; height: 300px;">
                 </a>
             </div>
             <div class="col-md-5">
-                <h2>{{ characters[0].name }}</h2>
+                <h2>{{ character.name }}</h2>
 {#                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>#}
                 <ul>
-                  <li>Birth year: {{ characters[0].birth_year }}</li>
-                  <li>Height: {{ characters[0].height }}</li>
-                  <li>Weight: {{ characters[0].mass }}</li>
-                  <li>Hair Color: {{ characters[0].hair_color }}</li>
+                  <li>Birth year: {{ character.birth_year }}</li>
+                  <li>Height: {{ character.height }}</li>
+                  <li>Weight: {{ character.mass }}</li>
+                  <li>Hair Color: {{ character.hair_color }}</li>
                   <li>Films: </li>
                   <li>Planets: </li>
                 </ul>
@@ -95,56 +95,6 @@
         <!-- /.row -->
 
         <hr>
-
-        <!-- Project Two -->
-        <div class="row">
-            <div class="col-md-7">
-                <a href="#">
-                    <img class="img-responsive" src="{{ characters[1].img_url }}" alt="" style="width: 700px; height: 300px;">
-                </a>
-            </div>
-            <div class="col-md-5">
-                <h2>{{ characters[1].name }}</h2>
-{#                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>#}
-                <ul>
-                  <li>Birth year: {{ characters[1].birth_year }}</li>
-                  <li>Height: {{ characters[1].height }}</li>
-                  <li>Weight: {{ characters[1].mass }}</li>
-                  <li>Hair Color: {{ characters[1].hair_color }}</li>
-                  <li>Films: </li>
-                  <li>Planets: </li>
-                </ul>
-                <a class="btn btn-primary" href="{{ url_for('character', character_id=1) }}">View<span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Project Three -->
-        <div class="row">
-            <div class="col-md-7">
-                <a href="#">
-                    <img class="img-responsive" src="{{ characters[2].img_url }}" alt="" style="width: 700px; height: 300px;">
-                </a>
-            </div>
-            <div class="col-md-5">
-                <h2>{{ characters[2].name }}</h2>
-{#                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>#}
-                <ul>
-                  <li>Birth year: {{ characters[2].birth_year }}</li>
-                  <li>Height: {{ characters[2].height }}</li>
-                  <li>Weight: {{ characters[2].mass }}</li>
-                  <li>Hair Color: {{ characters[2].hair_color }}</li>
-                  <li>Films: </li>
-                  <li>Planets: </li>
-                </ul>
-                <a class="btn btn-primary" href="{{ url_for('character', character_id=2) }}">View<span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        {#TODO: create common stylesheet for img style width and height#}
 
         <!-- Footer -->
         <footer>
