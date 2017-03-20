@@ -21,7 +21,7 @@ class MockDB:
         # Phase 2: Remove self.p, self.c, self.f
         self.p = ["Tatooine","Naboo","Bespin"]
         self.c = ["Luke Skywalker","Lobot","R2-D2"]
-        self.f = ["A New Hope","Return of the Jedi", "Empire Strikes Back"]
+        self.f = ["A New Hope","Return of the Jedi", "The Empire Strikes Back"]
         self.static_folder = static_folder
         self.films = self.init_films()
         self.characters = self.init_characters()
@@ -69,7 +69,7 @@ class MockDB:
         c1 = Character(d[0]['name'], d[0]['birth_year'], d[0]['height'], d[0]['mass'], "http://starwarscardtraderapp.com/wp-content/uploads/2015/12/99-1-7-Award-Luke-Skywalker.png",
                        [Link(self.f[0], 0), Link(self.f[1], 1), Link(self.f[2], 2)], [Link(self.p[0], 0)])
         c2 = Character(d[1]['name'], d[1]['birth_year'], d[1]['height'], d[1]['mass'], "https://lumiere-a.akamaihd.net/v1/images/databank_lobot_01_169_8a50d7ae.jpeg?region=0%2C0%2C1560%2C878&width=768",
-                       [Link(self.f[1], 1)], [Link(self.p[2], 2)])
+                       [Link(self.f[2], 2)], [Link(self.p[2], 2)])
         c3 = Character(d[2]['name'], d[2]['birth_year'], d[2]['height'], d[2]['mass'], "http://rcysl.com/wp-content/uploads/2017/03/R2d2-Wallpaper-In-High-Definition-.jpg",
                        [Link(self.f[0], 0), Link(self.f[1], 1), Link(self.f[2], 2)], [Link(self.p[1], 1)])
 
