@@ -18,9 +18,10 @@ class Link:
 class MockDB:
 
     def __init__(self, static_folder):
-        self.static_planets = {"Tatooine":0,"Naboo":1,"Bespin":2}
-        self.static_char = {"Luke Skywalker","Lobot","R2-D2"}
-        self.static_films = {"A New Hope":0,"Empire Strikes Back":1,"Return of the Jedi":2}
+        # Phase 2: Remove self.p, self.c, self.f
+        self.p = ["Tatooine","Naboo","Bespin"]
+        self.c = ["Luke Skywalker","Lobot","R2-D2"]
+        self.f = ["A New Hope","Return of the Jedi", "Empire Strikes Back"]
         self.static_folder = static_folder
         self.films = self.init_films()
         self.characters = self.init_characters()
@@ -50,9 +51,12 @@ class MockDB:
             data = json.load(f)
 
         d = data['results']
-        f1 = Film(d[0]['title'], d[0]['director'], d[0]['producer'], d[0]['episode_id'], d[0]['release_date'],self.static_char,self.static_planets, "http://cdn2us.denofgeek.com/sites/denofgeekus/files/starwars-iv.jpg")
-        f2 = Film(d[1]['title'], d[1]['director'], d[1]['producer'], d[1]['episode_id'], d[1]['release_date'],self.static_char,self.static_planets, "https://i.ytimg.com/vi/jDIHiIxUGEY/maxresdefault.jpg")
-        f3 = Film(d[2]['title'], d[2]['director'], d[2]['producer'], d[2]['episode_id'], d[2]['release_date'],self.static_char,self.static_planets, "http://static.dolimg.com/lucas/movies/starwars/starwars_epi5_01-de788d5a9549.jpg")
+        f1 = Film(d[0]['title'], d[0]['director'], d[0]['producer'], d[0]['episode_id'], d[0]['release_date'], "http://cdn2us.denofgeek.com/sites/denofgeekus/files/starwars-iv.jpg",
+                  [Link(self.c[0], 0), Link(self.c[2], 2)], [Link(self.p[0], 0)])
+        f2 = Film(d[1]['title'], d[1]['director'], d[1]['producer'], d[1]['episode_id'], d[1]['release_date'], "https://i.ytimg.com/vi/jDIHiIxUGEY/maxresdefault.jpg",
+                  [Link(self.c[0], 0), Link(self.c[2], 2)], [Link(self.p[0], 0), Link(self.p[1], 1)])
+        f3 = Film(d[2]['title'], d[2]['director'], d[2]['producer'], d[2]['episode_id'], d[2]['release_date'], "http://static.dolimg.com/lucas/movies/starwars/starwars_epi5_01-de788d5a9549.jpg",
+                  [Link(self.c[0], 0), Link(self.c[1], 1), Link(self.c[2], 2)], [Link(self.p[2], 2)])
 
         return [f1, f2, f3]
 
@@ -62,9 +66,12 @@ class MockDB:
             data = json.load(f)
 
         d = data['results']
-        c1 = Character(d[0]['name'], d[0]['birth_year'], d[0]['height'], d[0]['mass'], self.static_films, self.static_planets, "http://starwarscardtraderapp.com/wp-content/uploads/2015/12/99-1-7-Award-Luke-Skywalker.png")
-        c2 = Character(d[1]['name'], d[1]['birth_year'], d[1]['height'], d[1]['mass'], self.static_films, self.static_planets, "https://lumiere-a.akamaihd.net/v1/images/databank_lobot_01_169_8a50d7ae.jpeg?region=0%2C0%2C1560%2C878&width=768")
-        c3 = Character(d[2]['name'], d[2]['birth_year'], d[2]['height'], d[2]['mass'], self.static_films, self.static_planets, "http://rcysl.com/wp-content/uploads/2017/03/R2d2-Wallpaper-In-High-Definition-.jpg")
+        c1 = Character(d[0]['name'], d[0]['birth_year'], d[0]['height'], d[0]['mass'], "http://starwarscardtraderapp.com/wp-content/uploads/2015/12/99-1-7-Award-Luke-Skywalker.png",
+                       [Link(self.f[0], 0), Link(self.f[1], 1), Link(self.f[2], 2)], [Link(self.p[0], 0)])
+        c2 = Character(d[1]['name'], d[1]['birth_year'], d[1]['height'], d[1]['mass'], "https://lumiere-a.akamaihd.net/v1/images/databank_lobot_01_169_8a50d7ae.jpeg?region=0%2C0%2C1560%2C878&width=768",
+                       [Link(self.f[1], 1)], [Link(self.p[2], 2)])
+        c3 = Character(d[2]['name'], d[2]['birth_year'], d[2]['height'], d[2]['mass'], "http://rcysl.com/wp-content/uploads/2017/03/R2d2-Wallpaper-In-High-Definition-.jpg",
+                       [Link(self.f[0], 0), Link(self.f[1], 1), Link(self.f[2], 2)], [Link(self.p[1], 1)])
 
         return [c1, c2, c3]
 
@@ -75,9 +82,9 @@ class MockDB:
 
         d = data['results']
         p1 = Planet(d[0]['name'], d[0]['climate'], d[0]['population'], d[0]['gravity'], d[0]['terrain'], "https://img.clipartfox.com/92129e5d25a3b8557820a8e286ee002e_chott-el-jerid-wookieepedia-star-wars-tatooine-clipart_1900-815.jpeg",
-                    [Link("A New Hope", 0), Link("Return of the Jedi", 1)], [Link("Luke Skywalker", 0)])
+                    [Link(self.f[0], 0), Link(self.f[1], 1)], [Link(self.c[0], 0)])
         p2 = Planet(d[1]['name'], d[1]['climate'], d[1]['population'], d[1]['gravity'], d[1]['terrain'], "http://overmental.com/wp-content/uploads/2015/07/Naboo-TPM-790x336.jpg",
-                    [Link("Return of the Jedi", 1)], [Link("R2-D2", 2)])
+                    [Link(self.f[1], 1)], [Link(self.c[2], 2)])
         p3 = Planet(d[2]['name'], d[2]['climate'], d[2]['population'], d[2]['gravity'], d[2]['terrain'], "http://cdn.segmentnext.com/wp-content/uploads/2016/05/Star-Wars-Battlefront-Bespin-DLC-1.jpg",
-                    [Link("The Empire Strikes Back", 2)], [Link("Lobot", 1)])
+                    [Link(self.f[2], 2)], [Link(self.c[1], 1)])
         return [p1, p2, p3]

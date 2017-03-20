@@ -37,17 +37,17 @@
                     <li>Birth year: {{ character.birth_year }}</li>
                     <li>Height: {{ character.height }}</li>
                     <li>Weight: {{ character.mass }}</li>
-                    <li>Films:
+                    <li>Planets:
                         <ul>
-                            {% for film,film_id in character.films.iteritems() %}
-                            <li><a href="{{url_for('film', film_id = film_id)}}">{{film}}</a></li>
+                            {% for l in character.planets %}
+                                <li><a href="{{ url_for('planet', planet_id=l.index) }}">{{ l.description }}</a></li>
                             {% endfor %}
                         </ul>
-                      </li>
-                      <li>Planets:
+                    </li>
+                        <li>Films:
                         <ul>
-                            {% for planet,planet_id in character.planets.iteritems() %}
-                            <li><a href="{{url_for('planet', planet_id = planet_id)}}">{{planet}}</a></li>
+                            {% for l in character.films %}
+                                <li><a href="{{ url_for('film', film_id=l.index) }}">{{ l.description }}</a></li>
                             {% endfor %}
                         </ul>
                     </li>

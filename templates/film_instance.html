@@ -35,20 +35,20 @@
                 <h4>Episode {{ film.episode_no }}</h4>
 {#                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>#}
                 <ul>
-                  <li>Director: {{ film.director }}</li>
-                  <li>Producers: {{ film.producer }}</li>
-                  <li>Release Date: {{ film.release_date }}</li>
-                   <li>Characters: 
+                    <li>Director: {{ film.director }}</li>
+                    <li>Producers: {{ film.producer }}</li>
+                    <li>Release Date: {{ film.release_date }}</li>
+                    <li>Characters:
                         <ul>
-                            {% for character,char_id in film.characters.iteritems() %}
-                            <li><a href="{{url_for('character', character_id = char_id)}}">{{character}}</a></li>
+                            {% for l in film.characters %}
+                                <li><a href="{{ url_for('character', character_id=l.index) }}">{{ l.description }}</a></li>
                             {% endfor %}
-                        </ul> 
-                      </li>
-                      <li>Planets: 
+                        </ul>
+                    </li>
+                        <li>Planets:
                         <ul>
-                            {% for planet,planet_id in film.planets.iteritems() %}
-                            <li><a href="{{url_for('planet', planet_id = planet_id)}}">{{planet}}</a></li>
+                            {% for l in film.planets %}
+                                <li><a href="{{ url_for('planet', planet_id=l.index) }}">{{ l.description }}</a></li>
                             {% endfor %}
                         </ul>
                     </li>
