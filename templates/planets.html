@@ -30,6 +30,42 @@
         <script type="text/jsx">
             var planet_list = JSON.parse({{planets | tojson}});
             console.log(planet_list);
+            
+            function ListElements(props) {
+                var list = props.list;
+                var listItems = list.map((ele) => <li>{ele.name}</li>);
+                return (<ul>{listItems}</ul>);
+            }
+
+            function Planet(props){
+                return (<div><div className={"row"}>
+                            <div className={"col-md-7"}>
+                                <a href={"#"}>
+                                    <img className={"img-responsive"} src={props.planet.img_url} alt={""} style={s = {width: '700px', height: '300px',}} />
+                                </a>
+                            </div>
+                            <div className={"col-md-5"}>
+                                <h2>{props.planet.name}</h2>
+                                <ul>
+                                  <li>Climate: {props.planet.climate} </li>
+                                  <li>Population: {props.planet.population}</li>
+                                  <li>Gravity: {props.planet.gravity}</li>
+                                  <li>Terrain: {props.planet.terrain}</li>
+                                  <li>Residents:
+                                  </li>
+                                  <li>Films:
+                                  </li>
+                                </ul>
+                                <a className={"btn btn-primary"} href={"/planets/"+props.id}>View<span className={"glyphicon glyphicon-chevron-right"}></span></a>
+                            </div>
+                        </div>
+                        <hr /></div>)
+            }
+            for(i = 0; i < planet_list.length; i++)
+            {
+                ReactDOM.render(<Planet planet={planet_list[i]} id={i}/>, document.getElementById(''+i));
+            }
+            
 
         </script>
 
