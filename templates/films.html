@@ -22,44 +22,61 @@
             </div>
         </div>
         <!-- /.row -->
+        <div id="film_list"> </div>
 
-        {% for index, film in films %}
-            <!-- Project One -->
-            <div class="row">
-                <div class="col-md-7">
-                    <a href="#">
-                        <img class="img-responsive" src="{{ film.img_url }}" alt="" style="width: 700px; height: 300px;">
-                    </a>
-                </div>
-                <div class="col-md-5">
-                    <h2>{{ film.title }}</h2>
-                    <h4>Episode {{ film.episode_no }}</h4>
-    {#                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>#}
-                    <ul>
-                        <li>Director: {{ film.director }}</li>
-                        <li>Producers: {{ film.producer }}</li>
-                        <li>Release Date: {{ film.release_date }}</li>
-                        <li>Characters:
-                            <ul>
-                                {% for l in film.characters %}
-                                    <li><a href="{{ url_for('character', character_id=l.index) }}">{{ l.description }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                            <li>Planets:
-                            <ul>
-                                {% for l in film.planets %}
-                                    <li><a href="{{ url_for('planet', planet_id=l.index) }}">{{ l.description }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                    </ul>
-                    <a class="btn btn-primary" href="{{ url_for('film', film_id=index) }}">View<span class="glyphicon glyphicon-chevron-right"></span></a>
-                </div>
-            </div>
-            <!-- /.row -->
-            <hr>
-        {% endfor %}
+        <script type="text/jsx">
+            var film_list = JSON.parse({{films | tojson}});
+            
+            console.log(film_list);
+            
+            function GenericList(props) {
+                var list = props.list;
+                var listItems = list.map((ele) => <li>{ele}</li>);
+                return (<ul>{listItems}</ul>);
+            }
+
+            function RefList(props) {
+                var list = props.list;
+
+                var listItems = list.map((ele) => <li><a href={"/"+props.reftype+"/"+ele.index}>{ele.description}</a></li>);
+                return (<ul>{listItems}</ul>);
+            }
+
+            function Film(props){
+                return (<div><div className={"row"}>
+                            <div className={"col-md-7"}>
+                                <a href={"#"}>
+                                    <img className={"img-responsive"} src={props.film.img_url} alt={""} style={s = {width: '700px', height: '300px',}} />
+                                </a>
+                            </div>
+                            <div className={"col-md-5"}>
+                                <h2>{props.film.title}</h2>
+                                <h4>Episode {props.film.episode_no}</h4>
+                                <ul>
+                                    <li>Director: {props.film.director}</li>
+                                    <li>Producers: {props.film.producer}</li>
+                                    <li>Release Date: {props.film.release_date}</li>
+                                    <li>Characters:
+                                        <RefList list={props.film.characters} reftype={"characters"} />
+                                    </li>
+                                        <li>Planets:
+                                        <RefList list={props.film.planets} reftype={"planets"} />
+                                    </li>
+                                </ul>
+                                <a className={"btn btn-primary"} href={"films/"+props.index}>View<span className={"glyphicon glyphicon-chevron-right"}></span></a>
+                            </div>
+                        </div>
+                        <hr /></div>)
+            }
+
+            var films = [];
+            for(i = 0; i < film_list.length; i++)
+            {
+                films.push(<Film film={film_list[i]} id={i}/>);
+            }
+
+            ReactDOM.render(<div>{films}</div>, document.getElementById("film_list"));
+        </script>
 
         {#TODO: create common stylesheet for img style width and height#}
 

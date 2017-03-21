@@ -23,42 +23,61 @@
         </div>
         <!-- /.row -->
 
-        {% for index, character in characters %}
-            <!-- Project One -->
-            <div class="row">
-                <div class="col-md-7">
-                    <a href="#">
-                        <img class="img-responsive" src="{{ character.img_url }}" alt="" style="width: 700px; height: 300px;">
-                    </a>
-                </div>
-                <div class="col-md-5">
-                    <h2>{{ character.name }}</h2>
-    {#                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>#}
-                    <ul>
-                        <li>Birth year: {{ character.birth_year }}</li>
-                        <li>Height: {{ character.height }}</li>
-                        <li>Weight: {{ character.mass }}</li>
-                        <li>Planets:
-                            <ul>
-                                {% for l in character.planets %}
-                                    <li><a href="{{ url_for('planet', planet_id=l.index) }}">{{ l.description }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                            <li>Films:
-                            <ul>
-                                {% for l in character.films %}
-                                    <li><a href="{{ url_for('film', film_id=l.index) }}">{{ l.description }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                    </ul>
-                    <a class="btn btn-primary" href="{{ url_for('character', character_id=index) }}">View<span class="glyphicon glyphicon-chevron-right"></span></a>
-                </div>
-            </div>
-            <!-- /.row -->
-            <hr>
-        {% endfor %}
+        <div id="char_list"> </div>
+
+        <script type="text/jsx">
+            var character_list = JSON.parse({{characters | tojson}});
+            
+            console.log(character_list);
+            
+            function GenericList(props) {
+                var list = props.list;
+                var listItems = list.map((ele) => <li>{ele}</li>);
+                return (<ul>{listItems}</ul>);
+            }
+
+            function RefList(props) {
+                var list = props.list;
+
+                var listItems = list.map((ele) => <li><a href={"/"+props.reftype+"/"+ele.index}>{ele.description}</a></li>);
+                return (<ul>{listItems}</ul>);
+            }
+
+            function Character(props){
+                return (<div><div className={"row"}>
+                            <div className={"col-md-7"}>
+                                <a href={"#"}>
+                                    <img className={"img-responsive"} src={props.character.img_url} alt={""} style={s = {width: '700px', height: '300px',}} />
+                                </a>
+                            </div>
+                            <div className={"col-md-5"}>
+                                <h2>{props.character.name}</h2>
+                                <ul>
+                                    <li>Birth year: {props.character.birth_year}</li>
+                                    <li>Height: {props.character.height}</li>
+                                    <li>Weight: {props.character.mass}</li>
+                                    <li>Planets:
+                                        <RefList list = {props.character.planets} reftype="planets" />
+                                    </li>
+                                    <li>Films:
+                                        <RefList list = {props.character.films} reftype="films" />
+                                    </li>
+                                </ul>
+                                <a className={"btn btn-primary"} href={"/characters/"+props.id}>View<span className={"glyphicon glyphicon-chevron-right"}></span></a>
+                            </div>
+                        </div>
+
+                        <hr /></div>)
+            }
+
+            var chars = [];
+            for(i = 0; i < character_list.length; i++)
+            {
+                chars.push(<Character character={character_list[i]} id={i}/>);
+            }
+
+            ReactDOM.render(<div>{chars}</div>, document.getElementById("char_list"));
+        </script>
 
         {#TODO: create common stylesheet for img style width and height#}
 
