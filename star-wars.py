@@ -1,5 +1,7 @@
 from flask import Flask, render_template
 from db_mock import MockDB
+import jsonpickle
+
 
 app = Flask(__name__)
 
@@ -43,7 +45,8 @@ def planet(planet_id):
 
 @app.route('/planets')
 def planets():
-    return render_template('planets.html', planets=enumerate(db.get_planets()))
+    data = jsonpickle.encode(db.get_planets())
+    return render_template('planets.html', planets=data)
 
 
 if __name__ == '__main__':

@@ -4,34 +4,28 @@
     <!-- App global header -->
     {% include 'head.html' %}
 
-    <title>Title</title>
+    <title>The SWE Awakens</title>
 </head>
 <body>
 
-  <div id="content"> </div>
+  <div id="content" align = "center"> </div>
 
+  <!-- example React code -->
   <script type="text/jsx">
 
-            var realPython = React.createClass({
+            var header = React.createClass({
                 render: function() {
-                  return (<h2>Greetings, from Real Python!</h2>);
+                  return (<h1>The <b>SWE Awakens</b></h1>);
                 }
               });
 
               ReactDOM.render(
-                React.createElement(realPython, null),
+                React.createElement(header, null),
                 document.getElementById('content')
               );
 
 
   </script>
-
-   <!--
-    <div class="row">
-      <div class="col-md-12">
-        <h1 align="center">The SWE Awakens</h1>
-      </div>
-    </div>
       
     <div class="row">
       <div class="col-md-12" align="center">
@@ -66,7 +60,7 @@
         </a>
       </div>
     </div>
-  </div> -->
+  </div>
  
 </body>
 </html>
