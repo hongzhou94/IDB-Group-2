@@ -1,4 +1,4 @@
-from models import Film, Character, Planet
+from models import Film, Character, Planet, Member
 import json
 import os
 
@@ -22,10 +22,12 @@ class MockDB:
         self.p = ["Tatooine","Naboo","Bespin"]
         self.c = ["Luke Skywalker","Lobot","R2-D2"]
         self.f = ["A New Hope","Return of the Jedi", "The Empire Strikes Back"]
+        self.m = ["Adam", "Arjun", "Pushkar", "Sam", "Hongzhou"]
         self.static_folder = static_folder
         self.films = self.init_films()
         self.characters = self.init_characters()
         self.planets = self.init_planets()
+        self.members = self.init_members()
 
     def get_film(self, index):
         return self.films[index]
@@ -36,6 +38,9 @@ class MockDB:
     def get_planet(self, index):
         return self.planets[index]
 
+    def get_member(self, index):
+        return self.members[index]
+
     def get_films(self):
         return self.films
 
@@ -44,6 +49,9 @@ class MockDB:
 
     def get_planets(self):
         return self.planets
+
+    def get_members(self):
+        return self.members
 
     def init_films(self):
         f_name = os.path.join(self.static_folder, 'Films.json')
@@ -88,3 +96,16 @@ class MockDB:
         p3 = Planet(d[2]['name'], d[2]['climate'], d[2]['population'], d[2]['gravity'], d[2]['terrain'], "http://cdn.segmentnext.com/wp-content/uploads/2016/05/Star-Wars-Battlefront-Bespin-DLC-1.jpg",
                     [Link(self.f[2], 2)], [Link(self.c[1], 1)])
         return [p1, p2, p3]
+
+    def init_members(self):
+        f_name = os.path.join(self.static_folder, 'Members.json')
+        with open(f_name) as f:
+            data = json.load(f)
+
+        d = data['results']
+        m1 = Member(d[0]['name'], d[0]['bio'], d[0]['responsibilities'], d[0]['commits'], d[0]['issues'], d[0]['unit_tests'])
+        m2 = Member(d[1]['name'], d[1]['bio'], d[1]['responsibilities'], d[1]['commits'], d[1]['issues'], d[1]['unit_tests'])
+        m3 = Member(d[2]['name'], d[2]['bio'], d[2]['responsibilities'], d[2]['commits'], d[2]['issues'], d[2]['unit_tests'])
+        m4 = Member(d[3]['name'], d[3]['bio'], d[3]['responsibilities'], d[3]['commits'], d[3]['issues'], d[3]['unit_tests'])
+        m5 = Member(d[4]['name'], d[4]['bio'], d[4]['responsibilities'], d[4]['commits'], d[4]['issues'], d[4]['unit_tests'])
+        return [m1, m2, m3, m4, m5]

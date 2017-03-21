@@ -38,3 +38,12 @@ class Planet:
         self.films = films
         self.characters = characters
 
+class Member:
+    def __init__(self, name, bio, responsibilities, commits, issues, unit_tests):
+        self.name = name
+        self.bio = bio
+        self.responsibilities = responsibilities
+        self.commits = commits
+        self.issues = issues
+        self.unit_tests = unit_tests
+

@@ -13,6 +13,16 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/about/<member_id>')
+def aboutid(member_id):
+    member_id = int(member_id)
+    return render_template('about_instance.html', member=db.get_member(member_id))
+
+
 @app.route('/films/<film_id>')
 def film(film_id):
     film_id = int(film_id)

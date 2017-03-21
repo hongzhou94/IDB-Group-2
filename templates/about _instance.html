@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- App global header -->
+    {% include 'head.html' %}
+
+    <title>Star Wars - About</title>
+
+</head>
+
+<body>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">About</h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        {% for index, member in members %}
+            <!-- Project One -->
+            <div class="row">
+                <div class="col-md-7">
+                    <a href="#">
+                        <img class="img-responsive" src="{{  }}" alt="" style="width: 700px; height: 300px;">
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <h2>{{ member.name }}</h2>
+    {#                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>#}
+                    <ul>
+                        <li>Bio: {{ member.bio }}</li>
+                        <li>Responsibilities: {{ member.responsibilities }}</li>
+                        <li>Commits: {{ member.commits }}</li>
+                        <li>Issues: {{ member.issues }}</li>
+                        <li>Unit Tests: {{ member.unit_tests }}</li>
+                    </ul>
+                    <a class="btn btn-primary" href="{{ url_for('member', member_id=index) }}">View<span class="glyphicon glyphicon-chevron-right"></span></a>
+                </div>
+            </div>
+            <!-- /.row -->
+            <hr>
+        {% endfor %}
+
+        {#TODO: create common stylesheet for img style width and height#}
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+</body>
+
+</html>
